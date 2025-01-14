@@ -1,30 +1,53 @@
 package com.example.project;
 
 public class Book{
-    //requires 5 attributes String title, String author, int yearPublished, String isbn, int quantity
+    // instance variables
+    private String title;
+    private String author;
+    private int yearPublished;
+    private String isbn;
+    private int quantity;
 
-    //requires 1 constructor with 5 arguments that intitialize the attribtues of the class.
+    // Constructor which initializes a Book object with it's title, author, publish date, ID, and quantity.
+    public Book(String title, String author, int yearPublished, String isbn, int quantity) {
+        this.title = title;
+        this.author = author;
+        this.yearPublished = yearPublished;
+        this.isbn = isbn;
+        this.quantity = quantity;
+    }
 
-    // public  getTitle() {}
+    // getter and setter methods for all 5 instance variables
+    public String getTitle() {return title;}
 
-    // public setTitle() {}
+    public void setTitle(String newTitle) {title = newTitle;}
 
-    // public getAuthor() {}
+    public String getAuthor() {return author;}
 
-    // public setAuthor() {}
+    public void setAuthor(String newAuthor) {author = newAuthor;}
 
-    // public getYearPublished() {}
+    public int getYearPublished() {return yearPublished;}
 
-    // public setYearPublished() {}
+    public void setYearPublished(int newYearPublished) {yearPublished = newYearPublished;}
 
-    // public getIsbn() {}
+    public String getIsbn() {return isbn;}
 
-    // public void setIsbn() {}
+    public void setIsbn(String newID) {isbn = newID;}
 
-    // public int getQuantity() {}
+    public int getQuantity() {return quantity;}
 
-    // public void setQuantity() {}
+    public void setQuantity(int newQuantity) {quantity = newQuantity;}
 
-    // public  bookInfo(){} //returns "Title: [], Author: [], Year: [], ISBN: [], Quantity: []"
+
+    // returns the info of a book in the format: "Title: [], Author: [], Year: [], ISBN: [], Quantity: []"
+    public String bookInfo(){
+        String returnedString = "Title: ";
+        returnedString += title + ", Author: ";
+        returnedString += author + ", Year: ";
+        returnedString += yearPublished + ", ISBN: ";
+        returnedString += isbn + ", Quantity: ";
+        returnedString += quantity;
+        return returnedString;
+    } 
        
 }

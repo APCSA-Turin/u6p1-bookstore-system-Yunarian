@@ -1,8 +1,11 @@
 package com.example.project;
 
-public class BookStore{
+public class BookStore {
 
     //requires at least 2 attributes Book[] books, User[] users (initialized to an empty array of 10 max users) 
+    // static variables
+    private static Book[] books;
+    private static User[] users = new User[10];
 
     //requires 1 empty constructor
 
