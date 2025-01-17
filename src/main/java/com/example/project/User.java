@@ -40,7 +40,7 @@ public class User{
     // returns a user's info in the format: "Name: []\nID: []\nBooks:\n[]"
     public String userInfo() {
         String infoReturned = "Name: " + name + "\n";
-        infoReturned += "ID: " + id + "\n";
+        infoReturned += "Id: " + id + "\n";
         infoReturned += bookListInfo();
         return infoReturned;
     } 
