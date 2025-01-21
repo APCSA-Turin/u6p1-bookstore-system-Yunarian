@@ -4,11 +4,14 @@ public class BookStore {
 
     //requires at least 2 attributes Book[] books, User[] users (initialized to an empty array of 10 max users) 
     // static variables
-    private static Book[] books = new Book[5];
+    private static Book[] books = new Book[6];
     private static User[] users = new User[10];
 
     // empty constructor
-    public BookStore() {}
+    public BookStore() {
+        users = new User[10];
+        books = new Book[6];
+    }
 
     // getters and setters
     public User[] getUsers() {return users;}
@@ -33,7 +36,6 @@ public class BookStore {
             if (users[i] != null && users[i].equals(user)) {
                 users[i] = null;
                 consolidateUsers();
-                break;
             }
         }
     }
@@ -52,38 +54,54 @@ public class BookStore {
     }
 
     // adds a book to the first empty element in the books array
-    public void addBook(Book book) {
-        for (int i = 0; i < books.length; i++) {
-            if (books[i] == null) {
-                books[i] = book;
-                break;
+    public void addBook(Book book){
+        // counts the number of nulls(used later)
+        int count = 0;
+        for (int i = 0; i < books.length; i++){
+            if (books[i] == null){
+                count++;
+            } 
+        }
+
+        Book[] temp = new Book[books.length + 1];
+        // copy the elements of books into temp (temp will have one null at the end)
+        for(int i = 0; i < books.length; i++){
+            temp[i] = books[i];
+        }
+
+        // put book at the end
+        temp[books.length] = book;
+        books = temp;
+
+        // remove extra null values by copying over all non null elements
+        Book[] nullRemover = new Book[books.length - count];
+        count = 0;
+        for(int i = 0; i < books.length; i++ ){
+            if(books[i] != null){
+                nullRemover[count] = books[i];
+                count++;
             }
         }
+        // set books to the new array without any nulls
+        books = nullRemover;
     }
 
     // inserts the book at the specified index with the new book
     public void insertBook(Book book, int index) {
         // creates a new array with a length 1 greater than books
         // then inserts book at index, adding 1 to all books' index after book. 
-        // leaves a null at the last element of the array.
         Book[] newBooks = new Book[books.length + 1];
-        int count = 0;
-        for (int i = 0; i < books.length; i++) {
-            if (i == index) {
-                newBooks[i] = book;
-
+        int currentBook = 0;
+        for (int i = 0; i < newBooks.length; i++) {
+            if (i != index) {
+                newBooks[i] = books[currentBook];
+                currentBook++;
             } else {
-                newBooks[i] = books[count];
-                count++;
+                newBooks[i] = book;
             }
         }
 
-        // removes the null at the end of newbooks 
-        Book[] newerBooks = new Book[newBooks.length - 1];
-        for (int i = 0; i < newerBooks.length; i++) {
-            newerBooks[i] = newBooks[i];
-        }
-        books = newerBooks;
+        books = newBooks;
     }
 
     // removes a quantity of the first book which matches with the parameter.

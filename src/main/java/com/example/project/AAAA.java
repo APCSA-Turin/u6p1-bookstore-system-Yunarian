@@ -47,27 +47,40 @@ public class AAAA {
         User u4 = new User("Alex",IdGenerate.getCurrentId());
         store.addUser(u1);store.addUser(u2);store.addUser(u3);store.addUser(u4);
 
-        // store.addBook(b1);store.addBook(b4);
-        // store.insertBook(b2, 1);
-        // store.insertBook(b3,2);
-        // store.insertBook(b5,4);
+        store.addBook(b1);store.addBook(b4);
+        store.insertBook(b2, 1);
+        store.insertBook(b3,2);
+        store.insertBook(b5,4);
 
-        // store.addBook(b1);store.addBook(b2);store.addBook(b3);store.addBook(b4);store.addBook(b5);
-        // store.removeBook(b1);store.removeBook(b1);
-        // System.out.println(store.bookStoreBookInfo());
-
-
-        store.removeUser(u2);
-        store.removeUser(u1);
-
-        for (int i = 0; i < store.getUsers().length; i++) {
-            if (store.getUsers()[i] == null) {
-                System.out.print("NULL");
+        Book[] expected = {b1,b2,b3,b4,b5};
+        Book[] storeBooks = store.getBooks();
+        for (int i = 0; i < storeBooks.length; i++) {
+            if (storeBooks[i] == null) {
+                System.out.println("NULL");
             } else {
-                System.out.print(store.getUsers()[i].getName());
+                System.out.println(storeBooks[i].bookInfo());
             }
-            System.out.println(". Position in list: " + i);
         }
+
+        System.out.println();
+        for (int i = 0; i < expected.length; i++) {
+            System.out.println(expected[i].bookInfo());
+        }
+
+
+
+        // for (int i = 0; i < store.getUsers().length; i++) {
+        //     if (store.getUsers()[i] == null) {
+        //         System.out.print("NULL");
+        //     } else {
+        //         System.out.print(store.getUsers()[i].getName());
+        //     }
+        //     System.out.println(". Position in list: " + i);
+        // }
+        // System.out.println();
+        // store.removeUser(u3);
+
+
         
     }
 }
