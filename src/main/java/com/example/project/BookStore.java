@@ -4,13 +4,13 @@ public class BookStore {
 
     // requires at least 2 attributes Book[] books, User[] users (initialized to an empty array of 10 max users) 
     // static variables
-    private static Book[] books = new Book[6];
+    private static Book[] books = new Book[5];
     private static User[] users = new User[10];
 
     // constructor
     public BookStore() {
         users = new User[10];
-        books = new Book[6];
+        books = new Book[5];
     }
 
     // getters and setters
@@ -97,8 +97,14 @@ public class BookStore {
                 newBooks[i] = book;
             }
         }
+        
+        // removes the null at the end of newbooks 
+        Book[] newerBooks = new Book[newBooks.length - 1];
+        for (int i = 0; i < newerBooks.length; i++) {
+            newerBooks[i] = newBooks[i];
+        } 
         // modifying the books array with what has been done
-        books = newBooks;
+        books = newerBooks;
     }
 
     // removes a quantity of the first book which matches with the parameter.

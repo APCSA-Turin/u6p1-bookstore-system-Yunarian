@@ -27,7 +27,8 @@ public class User{
 
     public void setBooks(Book[] newBook) {booklist = newBook;}
 
-    //returns a booklist for the user, which each book taking it's own line. If null, that element is replaced with "empty" instead.
+    // returns a booklist for the user, which each book taking it's own line. 
+    // If null, that element is replaced with "empty" instead.
     public String bookListInfo() {
         String returnedString = "Books: \n";
         for (int i = 0; i < 5; i++) {
